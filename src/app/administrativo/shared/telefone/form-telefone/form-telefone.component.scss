@@ -1,0 +1,41 @@
+.pg-telefone-form {
+
+    p-table {
+        float: none !important;
+    }
+
+    .filial-section-title {
+        margin: 6px 0 0 !important;
+    }
+
+    .filial-section-subtitle {
+        margin: 0 0 6px;
+    }
+
+    .card-header-tel {
+        align-items: center;
+        display: flex;
+    }
+
+    .card-header-right {
+        margin-left: 10px;
+    }
+
+
+
+    /* modals*/
+    .ui-dialog-content.ui-widget-content {
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+
+    /* pesquisa */
+    .md-inputfield input {
+        width: 100%;
+    }
+
+    .md-inputfield textarea {
+        width: 100%;
+    }
+
+}

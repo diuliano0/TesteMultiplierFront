@@ -1,0 +1,120 @@
+<section class="pg-login">
+    <div class="login-panel ui-fluid">
+        <div class="ui-g" *ngIf="funcao == 0">
+            <div class="ui-g-12 login-header">
+                <h1>ACESSO RESTRITO</h1>
+                <h2>SEJA BEM VINDO(A) AO LOOKEI</h2>
+                <img src="../../assets/layout/images/logo-loading.png">
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+                <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="text" autocomplete="off"
+                           [formControl]="loginForm.controls['nome_conta']"
+                           pInputText/>
+                    <label>Conta</label>
+                </span>
+                    <!-- <app-error-message class="semshadow" [control]="loginForm.controls['nome_conta']"></app-error-message> -->
+                </div>
+                <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="text" autocomplete="off"
+                           [formControl]="loginForm.controls['username']"
+                           pInputText/>
+                    <label>Usuário</label>
+                </span>
+
+                    <!-- <app-error-message [control]="loginForm.controls['username']"></app-error-message> -->
+                </div>
+                <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="password" autocomplete="off"
+                           [formControl]="loginForm.controls['password']"
+                           pInputText/>
+                    <label>Senha</label>
+                </span>
+                    <!-- <app-error-message [control]="loginForm.controls['password']"></app-error-message> -->
+                </div>
+                <div class="ui-g-12 button-container" >
+                    <button pButton type="submit" label="Entrar" icon="ui-icon-https">
+                    </button>
+                </div>
+            </form>
+            <div class="login-links">
+                <a (click)="mudarFunca(1)">Recuperar Senha</a>
+            </div>
+        </div>
+        <div class="ui-g" *ngIf="funcao == 1">
+            <div class="ui-g-12 login-header">
+                <h1>Recuperar Senha</h1>
+                <h2>Preencha os dados abaixo para reenviar a senha para o seu e-mail de acesso ao administrativo.</h2>
+                <img src="../../assets/layout/images/logo-loading.png">
+            </div>
+            <form [formGroup]="recuperarSenhaForm" (ngSubmit)="recuperar(recuperarSenhaForm.value)">
+                <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="text" autocomplete="off"
+                           [formControl]="recuperarSenhaForm.controls['email']"
+                           pInputText/>
+                    <label>E-mail</label>
+                </span>
+                    <app-error-message [control]="recuperarSenhaForm.controls['email']"></app-error-message>
+                </div>
+                <div class="ui-g-12 button-container">
+                    <button type="submit"
+                            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                        <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-person"></span>
+                        <span class="ui-button-text ui-c">Enviar</span>
+                    </button>
+                </div>
+            </form>
+            <div class="login-links">
+                <a (click)="mudarFunca(0)">Login</a>
+            </div>
+        </div>
+        <div class="ui-g" *ngIf="routeParams?.hash">
+            <div class="ui-g-12 login-header">
+                <h1>Alterar Senha</h1>
+                <h2>Preencha os dados abaixo para alterar sua senha.</h2>
+                <img src="../../assets/layout/images/logo-loading.png">
+            </div>
+            <form [formGroup]="senhaForm" (ngSubmit)="recuperar(senhaForm.value)">
+                <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="text" autocomplete="off"
+                           [formControl]="senhaForm.controls['email']"
+                           pInputText/>
+                    <label>E-mail</label>
+                </span>
+                    <app-error-message [control]="senhaForm.controls['password']"></app-error-message>
+                </div>
+                <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="password" autocomplete="off"
+                           [formControl]="senhaForm.controls['password']"
+                           pInputText/>
+                    <label>Senha</label>
+                </span>
+                    <app-error-message [control]="senhaForm.controls['password']"></app-error-message>
+                </div>
+                <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="password" autocomplete="off"
+                           [formControl]="senhaForm.controls['password_confirmation']"
+                           pInputText/>
+                    <label>Confirmar senha</label>
+                </span>
+                    <app-error-message [control]="senhaForm.controls['password_confirmation']"></app-error-message>
+                </div>
+                <div class="ui-g-12 button-container">
+                    <button type="submit"
+                            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                        <!-- <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-person"></span> -->
+                        <span class="ui-button-text ui-c">Enviar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p-toast key="tst" [style]="{marginTop: '70px'}"></p-toast>
+</section>

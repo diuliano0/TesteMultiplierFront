@@ -1,0 +1,29 @@
+<section class="pg-locador-create m-t-20">
+  <form [formGroup]="locadorForm" (ngSubmit)="salvar(locadorForm.value)">
+    <div class="card cad-top_travado">
+      <div class="card-header-title">
+        <h1>Locador</h1>
+        <div class="ui-toolbar-group-right">
+          <button pButton type="submit" label="SALVAR" icon="ui-icon-save" class="green-btn m-r-10"></button>
+        </div>
+      </div>
+    </div>
+    <div class="card card-w-title margen_zerada">
+      <div class="card-header ch-alt cabecalho_card_cadastro">
+        <h2>Dados do Beneficiário</h2>
+      </div>
+      <app-pessoa-fisica-form [(item)]="pessoa" [imagePath]="imagePath" ></app-pessoa-fisica-form>
+    </div>
+    <div class="card card-w-title margen_zerada" *ngIf="!locador?.id">
+      <app-user-form [(item)]="usuario"></app-user-form>
+    </div>
+    <!-- Endereco-form -->
+    <div class="card card-w-title margen_zerada">
+      <app-endereco-form [(item)]="endereco"></app-endereco-form>
+    </div>
+    <!-- Telefone-from -->
+    <div class="card card-w-title margen_zerada">
+      <app-form-telefone [(itens)]="telefones"></app-form-telefone>
+    </div>
+  </form>
+</section>

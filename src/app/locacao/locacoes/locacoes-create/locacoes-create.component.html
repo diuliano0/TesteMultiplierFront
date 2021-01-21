@@ -1,0 +1,126 @@
+<section class="pg-locacoes-create">
+    <form [formGroup]="locacoesForm" (ngSubmit)="salvar(locacoesForm.value)">
+        <div class="card">
+            <div class="card-header-title nav-fixed">
+                <div class="ui-toolbar-group-left">
+                    <h1>Locação</h1>
+                </div>
+                <div class="ui-toolbar-group-right">
+                    <button pButton type="submit" label="SALVAR" icon="ui-icon-save" class="green-btn m-r-10"></button>
+                </div>
+            </div>
+        </div>
+        <div class="card card-w-title ui-md-6 margen_zerada" style="float: left; margin: 0">
+            <div class="card-header ch-alt cabecalho_card_cadastro">
+                <p class="convenio-section-subtitle">Informe os dados do Produto</p>
+            </div>
+            <div class="ui-g form-group margen_um">
+                <div class="ui-g-12 ui-md-12 ui-g form-group">
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="nome" pInputText>
+                            <label>Nome</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                              <p-dropdown [options]="categoriaLocacao"
+                                          autoWidth="false"
+                                          [style]="{'width':'100%', 'height':'100%'}"
+                                          formControlName="categoria_locacao_id"
+                                          placeholder="    "
+                                          ></p-dropdown>
+                            <label>Categoria</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                          <span class="md-inputfield">
+                              <p-dropdown [options]="status"
+                                          autoWidth="false" [style]="{'width':'100%'}"
+                                          formControlName="status"
+                                          placeholder="    "></p-dropdown>
+                              <label>Status</label>
+                          </span>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="capacidade" pInputText>
+                            <label>Capacidade</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="valor_locacao" pInputText>
+                            <label>Valor Padrão</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="custo_operacional" pInputText>
+                            <label>Custo Operacional</label>
+                        </span>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="url_360" pInputText>
+                            <label>Url 360</label>
+                        </span>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6">
+                        <span class="md-inputfield">
+                            <p-multiSelect [options]="comodidades" defaultLabel="Selecione" formControlName="comodidades"></p-multiSelect>
+                            <label>Comodidades</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-w-title ui-md-6 ui-g margen_zerada">
+            <div class="card-header ch-alt cabecalho_card_cadastro" style="width: 100%;">
+                <p class="convenio-section-subtitle">Descrição do produto</p>
+            </div>
+            <div class="ui-g form-group margen_um">
+                <div class="ui-g-12 ui-md-12 ui-g form-group">
+                    <p-editor formControlName="descricao" placeholder="Insira a descrição" [style]="{'min-height':'250px'}"></p-editor>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="routeParams?.id" class="card card-w-title margen_zerada">
+        <div class="card-header ch-alt cabecalho_card_cadastro" >
+            <h2 class="convenio-section-title">Inserir Imagens</h2>
+            <p class="convenio-section-subtitle">Arraste as imagens para cadastrar</p>
+        </div>
+        <div class="ui-g form-group margen_um">
+            <div class="ui-g-12 ui-md-12 ui-g">
+                <input type="file" style="display: none;" accept="image/png, image/jpeg, image/jpg, image/gif" #fileEvent (change)="changeListener($event)">
+                <div *ngFor="let file of files; let i =index " class="ui-g-12 ui-md-2 ui-g box__image">
+                    <img style="width: 100%;" src="{{file?.conteudo?file?.conteudo:file?.url}}" alt="{{file?.nome}}}">
+                    <div class="botao-fechar" (click)="removeImage(file?.id, i)">x</div>
+                </div>
+                <div *ngIf="carregarImg" class="ui-g-12 ui-md-2 ui-g box__image">
+                    <span class="box__icon">
+                        <img class="camera-locacao" src="../../../../assets/images/carregamento.svg" alt="carregamento">
+                    </span>
+                    <span class="box__main-text">
+                        Carregando Imgem...
+                    </span>
+                </div>
+                <div (click)="fileEvent.click()" appDragDrop (onFileDropped)="uploadFile($event)" class="ui-g-12 ui-md-2 ui-g box__image">
+                    <span class="box__icon">
+                        <img class="camera-locacao" src="../../../../assets/images/ar-camera.svg" alt="câmera">
+                    </span>
+                    <span class="box__main-text">
+                        Adicionar Foto
+                    </span>
+                    <span class="box__info-text">
+                        JPG, GIF e PNG somente
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

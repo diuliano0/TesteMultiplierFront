@@ -1,0 +1,36 @@
+.login-body {
+    padding-top: 18vh !important;
+}
+
+.pg-alterar-senha-create .card-header-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pg-alterar-senha-create .ui-g.form-group > div:first-child {
+    padding-left: 2px;
+}
+
+.pg-alterar-senha-create .ui-g.form-group > div {
+    min-height: 82px;
+    padding: 1em 1em 2em 0;
+}
+
+/* pesquisa */
+.md-inputfield input {
+    width: 100%;
+}
+
+.md-inputfield textarea {
+    width: 100%;
+}
+
+.ui-message {
+    border: none !important;
+    margin: 0 !important;
+    padding: 4px 0 0 !important;
+    color: #bd2526 !important;
+}
+.login-links{
+    margin: 0 auto;
+}

@@ -1,0 +1,14 @@
+<div (click)="updateUse()" class="layout-wrapper" [ngClass]="{'layout-wrapper-menu-active':sidebarActive, 'layout-overlay-menu':overlay}" *ngIf="autenticado">
+    <app-topbar *ngIf="autenticado"></app-topbar>
+    <app-sidebar *ngIf="autenticado"></app-sidebar>
+    <div class="layout-main">
+        <router-outlet *ngIf="autenticado"></router-outlet>
+        <app-footer></app-footer>
+    </div>
+</div>
+<article (click)="updateUse()" class="login-body" *ngIf="!autenticado">
+    <router-outlet *ngIf="!autenticado"></router-outlet>
+</article>
+
+<!-- Preloader -->
+<preloader-full></preloader-full>

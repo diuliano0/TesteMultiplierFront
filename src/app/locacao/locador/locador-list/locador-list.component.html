@@ -1,0 +1,99 @@
+<section class="lo-page-adjustment" #fomSize>
+
+    <div class="card lo-header-page-inner">
+        <div class="card-header-title nav-fixed">
+            <div class="ui-g-6 ui-toolbar-group-left">
+                <div class="lo-header-icon">
+                    <i class="lo-header-icon fa fa-calendar"></i>
+                </div>
+                <div class="lo-header-text">
+                    <h1>Locadores</h1>
+                    <small>Cadastro dos Locadores que foram cadastrados ou fizeram algum tipo de reserva</small>
+                </div>
+            </div>
+            <div class="ui-g-6 ui-toolbar-group-right">
+                <button pButton type="button" label="Novo" icon="ui-icon-add" (click)="getUrl('cadastro')"
+                        class="green-btn"></button>
+                <button pButton type="button" label="Editar" icon="ui-icon-create" (click)="getUrl('editar')"
+                        class="orange-btn"></button>
+                <button pButton type="button" label="Excluir" icon="ui-icon-delete" (click)="getUrl('excluir')"
+                        class="red-btn"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card lo-content-page-inner lo-padding-reset">
+        <div class="card-w-title">
+            <p-toolbar>
+                <form [formGroup]="pesquisaForm" (ngSubmit)="pesquisar(0,pesquisaForm.value)">
+                    <div class="ui-g form-group">
+                        <div class="ui-g-12 ui-md-4">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="core.pessoas.nome" pInputText>
+                                <label>Name</label>
+                            </span>
+                        </div>
+                        <div class="ui-g-12 ui-md-2">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="core.pessoas.email" pInputText>
+                                <label>Email</label>
+                            </span>
+                        </div>
+                        <div class="ui-g-12 ui-md-2">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="core.pessoas.cpf_cnpj" pInputText>
+                                <label>CPF</label>
+                            </span>
+                        </div>
+                        <div class="ui-g-12 ui-md-2">
+                            <span class="md-inputfield">
+                                <button style="float: right;" pButton type="submit" label="BUSCAR" icon="ui-icon-search"
+                                        class="green-btn"></button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </p-toolbar>
+        </div>
+        <p-table [columns]="cols"
+                 [value]="locadores?.data"
+                 selectionMode="single"
+                 dataKey="id"
+                 index="id"
+                 (onRowSelect)="onRowSelect($event)"
+                 (onRowUnselect)="onRowSelect($event)"
+                 (onPage)="onPage($event)"
+                 [(selection)]="selectedBenediciario"
+                 [paginator]="true"
+                 [totalRecords]="locadores?.meta?.pagination?.total"
+                 [rows]="locadores?.meta?.pagination?.per_page"
+                 [responsive]="true"
+                 [resizableColumns]="true"
+                 [rowsPerPageOptions]="[8,15,20]"
+                 [lazy]="true"
+                 (onLazyLoad)="loadData($event)"
+                 paginatorPosition="bottom" class="content">
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns" class="ui-resizable-column">
+                        {{rowData|showItem:col.field}}
+                    </td>
+                </tr>
+                <!--<div>
+                        <app-loading [carregando]="load"></app-loading>
+                    </div>-->
+            </ng-template>
+        </p-table>
+    </div>
+
+</section>

@@ -1,0 +1,75 @@
+<section class="pg-rota-create">
+    <form [formGroup]="rotaForm" (ngSubmit)="salvar(rotaForm.value)">
+        <!--<p-toolbar>-->
+        <!--<div class="ui-toolbar-group-right">-->
+        <!--<button pButton type="submit" label="Salvar" icon="ui-icon-save" class="blue-btn m-r-10"></button>-->
+        <!--<p-splitButton label="Save" icon="pi pi-check" [model]="items"></p-splitButton>-->
+        <!--</div>-->
+        <!--</p-toolbar>-->
+
+        <div class="card">
+            <div class="card-header-title">
+                <h1>Rota {{queryParams?.titulo? ' - '+queryParams?.titulo:'' }}</h1>
+                <div class="ui-toolbar-group-right">
+                    <button pButton type="submit" label="Salvar" icon="ui-icon-save" class="green-btn m-r-10"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-w-title">
+            <div class="ui-g form-group">
+                <div class="ui-g-12 ui-md-12 ui-g form-group">
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="titulo" pInputText>
+                            <app-error-message [control]="rotaForm.controls['titulo']"></app-error-message>
+                            <label>Titulo</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="rota" pInputText>
+                            <app-error-message [control]="rotaForm.controls['rota']"></app-error-message>
+                            <label>Rota</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="icon" pInputText>
+                            <app-error-message [control]="rotaForm.controls['icon']"></app-error-message>
+                            <label>Icone</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <p-inputSwitch formControlName="disabled"></p-inputSwitch>
+                            <label>Desabilitado</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <p-inputSwitch formControlName="is_menu"></p-inputSwitch>
+                            <label>Menu</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="prioridade" pInputText>
+                            <label>Prioridade</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                           <p-dropdown [options]="ambientes" placeholder="Seleicone o Ambiente"  formControlName="ambiente"></p-dropdown>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                           <p-dropdown [options]="modulos" placeholder="Seleicone o modulo"  formControlName="modulo"></p-dropdown>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,54 @@
+<section class="pg-page-blank-list lo-page-adjustment" #fomSize>
+    <div class="card lo-header-page-inner">
+        <div class="card-header-title nav-fixed">
+            <div class="ui-g-6 ui-toolbar-group-left">
+                <div class="lo-header-icon">
+                    <i class="lo-header-icon fa fa-calendar"></i>
+                </div>
+                <div class="lo-header-text">
+                    <h1>Titulo da Página</h1>
+                    <small>Rápida descrição do objetivo/valor da página</small>
+                </div>
+            </div>
+            <div class="ui-g-6 ui-toolbar-group-right">
+                <button pButton type="button" label="Salvar" icon="ui-icon-save" (click)="getUrl()"
+                        class="green-btn"></button>
+                <button pButton type="button" label="Editar" icon="ui-icon-create" (click)="getUrl()"
+                        class="orange-btn"></button>
+                <button pButton type="button" label="Excluir" icon="ui-icon-delete" (click)="getUrl()"
+                        class="red-btn"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card lo-content-page-inner lo-padding-reset">
+        <p-toolbar>
+            <form [formGroup]="pesquisaForm" (ngSubmit)="pesquisar(0,pesquisaForm.value)">
+                <div class="ui-g form-group">
+                    <div class="ui-g-5 ">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="locacao.locacoes.id" pInputText>
+                                <label>ID</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-5">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="locacao.locacoes.nome" pInputText>
+                                <label>Descrição</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-2">
+                            <span class="md-inputfield">
+                                <button pButton type="submit" label="Filtrar" icon="ui-icon-search"
+                                        class="lo-button-outline"></button>
+                            </span>
+                    </div>
+                </div>
+            </form>
+        </p-toolbar>
+    </div>
+
+    <div class="card lo-footer-page-inner lo-padding-reset">
+    </div>
+
+</section>

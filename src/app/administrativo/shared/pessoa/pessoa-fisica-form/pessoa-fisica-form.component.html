@@ -1,0 +1,89 @@
+<section class="pg-pessoa-fisica-form margen_um">
+    <div class="ui-g form-group m-t-20">
+        <div [ngClass]="{'ui-md-9' : (!disableImage), 'ui-md-12' : (disableImage)}"
+             class="ui-g-12 ui-g form-group p-l-0">
+            <form [formGroup]="pessoaForm">
+                <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="cpf_cnpj" (focusout)="focusout($event)"
+                           [textMask]="{mask: cpfMask}" pInputText>
+                    <app-error-message [control]="pessoaForm.controls['cpf_cnpj']"></app-error-message>
+                    <label>CPF</label>
+                </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="nome" pInputText>
+                    <app-error-message [control]="pessoaForm.controls['nome']"></app-error-message>
+                    <label>Nome</label>
+                </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="email" pInputText>
+                    <app-error-message [control]="pessoaForm.controls['email']"></app-error-message>
+                    <label>E-mail</label>
+                </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                        <span class="md-inputfield">
+                            <p-dropdown [options]="selectEstadoCivil" formControlName="estado_civil"
+                                        placeholder="Estado Civil">
+                            </p-dropdown>
+                            <app-error-message [control]="pessoaForm.controls['estado_civil']"></app-error-message>
+                        </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="data_nascimento" [textMask]="{mask: dataMask}" pInputText>
+                        <label>Data Nascimento</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="filiacao_mae" pInputText>
+                    <app-error-message [control]="pessoaForm.controls['filiacao_mae']"></app-error-message>
+                    <label>Filiação Mãe</label>
+                </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="rg" pInputText>
+                    <app-error-message [control]="pessoaForm.controls['rg']"></app-error-message>
+                    <label>RG</label>
+                </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                        <span class="md-inputfield">
+                            <p-dropdown [options]="selectSexo" formControlName="sexo"
+                                        placeholder="Sexo">
+                            </p-dropdown>
+                            <app-error-message [control]="pessoaForm.controls['sexo']"></app-error-message>
+                        </span>
+                </div>
+                <div class="ui-g-12 ui-md-12">
+                <span class="md-inputfield md-inputfield-descricao">
+                    <textarea [rows]="3" [cols]="30" pInputTextarea placeholder="Descrição"
+                              class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+                              formControlName="descricao" autoResize="autoResize">
+                    </textarea>
+
+                </span>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="!disableImage" class="ui-g-12 ui-md-3 mb-profile">
+            <div class="ui-g-12 mb-profile-img">
+                <img src="{{imagePath}}" class="ui-md-8">
+            </div>
+            <input type="file" style="display: none;" #fileEvent (change)="changeListener($event)">
+            <a (click)="fileEvent.click()" style="cursor: pointer;" alt="Alterar Imagem" class="ui-g-12">
+                <div class="mb-profile-text">
+                <span>
+                    <i class="ui-icon-camera-alt"></i> Alterar Imagem
+                </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>

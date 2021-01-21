@@ -1,0 +1,66 @@
+<section class="pg-endereco-form">
+    
+    <div class="card-header ch-alt cabecalho_card_cadastro">
+        <h2 class="filial-section-title">Endereço</h2>
+        <p class="filial-section-subtitle">Informe dos dados de endereço</p>
+    </div>
+    <div class="ui-g form-group m-t-20">
+    <form [formGroup]="enderecoForm">
+        <div class="ui-g form-group margen_um">
+            <div class="ui-g-12 ui-md-3">
+            <span class="md-inputfield inputfield-search">
+                <input type="text" formControlName="cep" [textMask]="{mask: cepMask}" pInputText>
+                <button pButton type="submit" (click)="localizaCep()" icon="ui-icon-search "></button>
+                <label>CEP</label>
+            </span>
+                <!--<div class="ui-g-12 no-pading">
+					<p-message *ngIf="enderecoForm.controls['cep'].hasError('required') && telefoneForm.controls['cep'].touched" severity="error" text="Campo Obrigatório"></p-message>
+				</div>-->
+            </div>
+            <div class="ui-g-12 ui-md-3">
+            <span class="md-inputfield">
+                <input type="text" formControlName="cidade_nome" readonly pInputText>
+                <app-error-message [control]="enderecoForm.controls['cidade_nome']"></app-error-message>
+                <label>Cidade</label>
+            </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+            <span class="md-inputfield">
+                <input type="text" formControlName="estado_nome" readonly pInputText>
+                <app-error-message [control]="enderecoForm.controls['estado_nome']"></app-error-message>
+                <label>Estado</label>
+            </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+            <span class="md-inputfield">
+                <input type="text" formControlName="logradouro" pInputText>
+                <app-error-message [control]="enderecoForm.controls['logradouro']"></app-error-message>
+                <label>Logradouro</label>
+            </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+            <span class="md-inputfield">
+                <input type="text" formControlName="numero" pInputText>
+                <app-error-message [control]="enderecoForm.controls['numero']"></app-error-message>
+                <label>Número</label>
+            </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+            <span class="md-inputfield">
+                <input type="text" formControlName="complemento" pInputText>
+                <app-error-message [control]="enderecoForm.controls['complemento']"></app-error-message>
+                <label>Complemento</label>
+            </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+            <span class="md-inputfield">
+                <p-dropdown [options]="tipoEndereco" id="tipo_endereco" formControlName="tipo_endereco"></p-dropdown>
+                <app-error-message [control]="enderecoForm.controls['tipo_endereco']"></app-error-message>
+                <label>Tipo de endereço</label>
+            </span>
+            </div>
+        </div>
+    </form>
+    </div>
+  
+</section>

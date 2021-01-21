@@ -1,0 +1,84 @@
+<section class="pg-grupo-create">
+    <form [formGroup]="grupoForm" (ngSubmit)="salvar(grupoForm.value)">
+
+        <div class="card">
+            <div class="card-header-title nav-fixed">
+                <div class="ui-toolbar-group-left">
+                    <h1>Grupos</h1>
+                </div>
+                <div class="ui-toolbar-group-right">
+                    <button pButton type="submit" label="Salvar" icon="ui-icon-save" class="green-btn m-r-10"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-w-title">
+            <div class="card-header ch-alt">
+                <h2>
+                    Inserir Grupo
+                </h2>
+            </div>
+            <div class="ui-g form-group">
+                <div class="ui-g-12 ui-md-9 ui-g form-group">
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="nome" pInputText>
+                            <app-error-message [control]="grupoForm.controls['nome']"></app-error-message>
+                            <label>Name do Grupo</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <p-dropdown [options]="selectStatusgrupo" id="status" formControlName="status">
+                            </p-dropdown>
+                            <app-error-message [control]="grupoForm.controls['status']"></app-error-message>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                       <p-multiSelect [options]="dashboards"
+                                      defaultLabel="Selecione dashboards"
+                                      formControlName="dashboards"
+                                      [panelStyle]="{minWidth:'12em'}">
+                       </p-multiSelect>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                    <span class="md-inputfield">
+                        <textarea [rows]="3"
+                                  [cols]="30"
+                                  pInputTextarea
+                                  placeholder="Descrição"
+                                  class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+                                  formControlName="descricao"
+                                  autoResize="autoResize"></textarea>
+                    </span>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-12">
+                    <h3>Permissoes</h3>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <span class="md-inputfield">
+                       <p-multiSelect [options]="modulos"
+                                      formControlName="modulos"
+                                      (onChange)="bucarRotas($event.value)"
+                                      [panelStyle]="{minWidth:'12em'}">
+                       </p-multiSelect>
+                        <app-error-message [control]="grupoForm.controls['modulos']"></app-error-message>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-md-12">
+                    <span class="md-inputfield">
+                        <p-tree [value]="filesTree"
+                                [propagateSelectionUp]="false"
+                                [propagateSelectionDown]="false"
+                                selectionMode="checkbox"
+                                [(selection)]="selectedFile">
+                        </p-tree>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

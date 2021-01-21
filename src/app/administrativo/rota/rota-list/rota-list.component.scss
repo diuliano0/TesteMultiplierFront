@@ -1,0 +1,72 @@
+app-rota-list{
+     .card-header-title {
+        display: flex;
+        justify-content: space-between;
+    }
+    .ui-table {
+        min-height: 70vh !important;
+
+        .ui-table-wrapper {
+            overflow-x: initial !important;
+        }
+
+    }
+     .ui-g.form-group > div:first-child {
+        padding-left: 2px;
+    }
+
+     .ui-g.form-group > div:last-child {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /** css custom **/
+    .ui-dataview-layout-options .ui-button {
+        margin-left: .5em;
+    }
+
+    .ui-dataview .filter-container {
+        text-align: center;
+    }
+
+    label.ng-tns-c8-14.ui-dropdown-label.ui-inputtext.ui-corner-all.ng-star-inserted {
+        color: black;
+    }
+
+    /** pesquisa **/
+    .md-inputfield input {
+        width: 100%;
+    }
+
+    /** breadcrumb  **/
+    body .ui-state-active,
+    body .ui-state-highlight {
+        background-color: transparent;
+    }
+
+    /** responsive **/
+    @media (max-width: 40em) {
+        .ui-dataview .car-details, .ui-dataview .search-icon {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .ui-dataview .filter-container {
+            text-align: left;
+        }
+
+        .ui-dataview-layout-options.ui-buttonset > .ui-button {
+            display: inline-block;
+            margin-left: 0;
+        }
+
+        .ui-dataview-layout-options.ui-buttonset > .ui-button:first-child {
+            border-radius: 50%;
+        }
+
+        .ui-dataview-layout-options.ui-buttonset > .ui-button:last-child {
+            border-radius: 50%;
+        }
+    }
+
+}

@@ -1,0 +1,16 @@
+.pg-grupo-create .card-header-title {
+    display: flex;
+    justify-content: space-between;
+    }
+
+.pg-grupo-create .ui-g.form-group > div:first-child {
+    padding-left: 2px;
+    }
+
+.pg-grupo-create .ui-g.form-group > div {
+    padding: 2em 1em 0 0;
+    }
+
+.pg-grupo-create .ui-inputtext {
+    width: 100%;
+    }

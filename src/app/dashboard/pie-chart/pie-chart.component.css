@@ -1,0 +1,45 @@
+
+.card-chart .card h1 {
+    text-align: center;
+}
+
+/*.card-chart .card .detail { */
+/*    border-width: thin;*/
+/*    border-style: solid;*/
+/*    border-color: #00719d;*/
+/*    border-top-left-radius: 16px;*/
+/*    border-top-right-radius: 16px;*/
+/*    margin: 17px 18px 11px 18px;*/
+/*    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);*/
+/*    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);*/
+/*}*/
+
+/*.card-chart .card .detail h3 {*/
+/*    text-align: center;*/
+/*    font-weight: bold;*/
+/*    margin-top: 0px;*/
+/*    padding-top: 8px;*/
+/*    padding-bottom: 7px;*/
+/*    background-color: #f3f3f3;*/
+/*    border-bottom: 1px solid #00719d;*/
+/*    border-top-left-radius: 16px;*/
+/*    border-top-right-radius: 16px;*/
+/*    margin-bottom: 0px;*/
+/*}*/
+
+.card-chart .card .detail ul li {
+    margin-bottom: 2px !important;
+}
+
+.card-chart .card .detail ul span {
+    float: right !important;
+}
+
+.card-chart .card .text-detail {
+    padding: 16px;
+}
+
+ul {
+    list-style-type: none !important;
+    padding-left: 0px !important;
+}

@@ -1,0 +1,37 @@
+$primaryColor: #002bd9;
+$primaryLightColor: #3133E2;
+$primaryDarkColor: #000DC2;
+$primaryTextColor: #ffffff;
+$accentColor: #FBBA3F;
+$accentLightColor: #FBCF7A;
+$accentDarkColor: #FB9B00;
+$accentTextColor: #ffffff;
+$complementColor: #FF2A51;
+$complementLightColor: #F26074;
+$complementDarkColor: #F70035;
+$whiteColor: #FFFFFF;
+$whiteLightColor: #F2F2F2;
+$whiteDarkColor: #E0E0E0;
+$blackColor: #000000;
+$blackLightColor: #BDBDBD;
+$blackDarkColor: #747474;
+$backgroundColor: #F3F3F3;
+$greenColor: #4CAF50;
+$orangeColor: #FF9800;
+$redColor: #F44336;
+$successColor: #6FE5A0;
+$infoColor: #4582e9;
+$warnColor: #fdb154;
+$dangerColor: #F67F7F;
+$primaryTextHoverColor: #002BD9;
+
+$activeMenuItemTextColor:#5180ce;
+$darkActiveMenuItemTextColor:#7399d7;
+$darkMenuItemTextColor:#dee0e3;
+$darkMenuItemInactiveTextColor:#757575;
+$darkMenuItemHoverBgColor:#51585d;
+$darkSidemenuBgColor:#22272a;
+$darkMenuBgColor:#2b3135;
+
+@import '../../sass/layout/layout';
+@import '../../sass/theme/theme';

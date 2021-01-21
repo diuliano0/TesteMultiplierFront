@@ -1,0 +1,70 @@
+.pg-locacoes-create .card-header-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pg-locacoes-create .camera-locacao {
+    width: 24pt;
+    fill: red;
+}
+
+.pg-locacoes-create .botao-fechar {
+    background: #ff7575;
+    width: 100%;
+    height: 17pt;
+    font-size: 1.3em;
+    color: #fff;
+    vertical-align: middle;
+}
+
+.pg-locacoes-create .box__image {
+    text-align: center;
+    border-radius: 2px;
+    padding: 2pt;
+    background-color: #fff;
+    /*border: 1px dashed #b01d23;*/
+    float: left;
+    cursor: pointer;
+}
+
+.pg-locacoes-create .box__icon {
+    height: 30px;
+    width: 100%;
+    margin-top: 24px;
+    float: left;
+}
+
+.pg-locacoes-create .box__main-text{
+    width: 100%;
+    margin-top: 5px;
+    font-size: 16px;
+    float: left;
+}
+
+.pg-locacoes-create .box__info-text{
+    width: 100%;
+    margin-top: 1px;
+    font-size: 11px;
+    line-height: 2;
+}
+
+.pg-locacoes-create .ui-g.form-group > div:first-child {
+    padding-left: 2px;
+}
+
+.pg-locacoes-create .ui-g.form-group > div {
+    min-height: 82px;
+    padding: 1em 1em 2em 0;
+}
+
+/* pesquisa */
+.md-inputfield input {
+    width: 100%;
+}
+
+.md-inputfield textarea {
+    width: 100%;
+}
+.pg-pessoa-fisica-form .mb-profile-text {
+    z-index: 900 !important;
+}

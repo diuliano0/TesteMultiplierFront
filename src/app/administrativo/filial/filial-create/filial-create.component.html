@@ -1,0 +1,209 @@
+<section class="pg-filial-create">
+    <form [formGroup]="pessoaForm" (ngSubmit)="salvar(pessoaForm.value)">
+        <div class="card">
+            <div class="card-header-title nav-fixed">
+                <div class="ui-toolbar-group-left">
+                    <h1>Conta</h1>
+                </div>
+                <div class="ui-toolbar-group-right">
+                    <button pButton type="submit" label="Salvar" icon="ui-icon-save" class="green-btn m-r-10"></button>
+                </div>
+            </div>
+        </div>
+        <div class="card card-w-title">
+            <div class="card-header ch-alt">
+                <h2 class="filial-section-title">Identificação da Conta</h2>
+                <p class="filial-section-subtitle">Informe os dados que identificam a conta</p>
+            </div>
+            <div class="ui-g form-group m-t-20">
+                <div class="ui-g-12 ui-md-9 ui-g form-group p-l-0">
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="nome_conta" pInputText>
+                                <app-error-message [control]="pessoaForm.controls['nome_conta']"></app-error-message>
+                                <label>Nome da conta</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="nome" pInputText>
+                                <app-error-message [control]="pessoaForm.controls['nome']"></app-error-message>
+                                <label>Nome Fantasia</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="razao_social" pInputText>
+                                <app-error-message [control]="pessoaForm.controls['razao_social']"></app-error-message>
+                                <label>Razão Social</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="cpf_cnpj" [textMask]="{mask: cnpjMask}" pInputText>
+                                <app-error-message [control]="pessoaForm.controls['cpf_cnpj']"></app-error-message>
+                                <label>CNPJ</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="inscricao_estadual" pInputText>
+                                <app-error-message
+                                    [control]="pessoaForm.controls['inscricao_estadual']"></app-error-message>
+                                <label>Inscricao Estadual</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="inscricao_municipal" pInputText>
+                                <app-error-message
+                                    [control]="pessoaForm.controls['inscricao_municipal']"></app-error-message>
+                                <label>Inscrição Municipal</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                            <span class="md-inputfield">
+                                <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"
+                                            formControlName="data_fundacao"></p-calendar>
+                                <app-error-message [control]="pessoaForm.controls['data_fundacao']"></app-error-message>
+                                <label>Data da Fundação</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                            <span class="md-inputfield md-inputfield-modulos">
+                                <p-multiSelect [options]="modulos" defaultLabel="Selecione"
+                                               formControlName="modulos_ativos"></p-multiSelect>
+                                <app-error-message
+                                    [control]="pessoaForm.controls['modulos_ativos']"></app-error-message>
+                                <label>Modulos</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                            <span class="md-inputfield md-inputfield-descricao">
+                                <textarea [rows]="3" [cols]="30" pInputTextarea placeholder="Descrição"
+                                          class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+                                          formControlName="descricao" autoResize="autoResize">
+                                </textarea>
+                                <app-error-message [control]="pessoaForm.controls['descricao']"></app-error-message>
+                            </span>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-3 mb-profile">
+                    <div class="ui-g-12 mb-profile-img">
+                        <img src="{{imagePath}}" class="ui-md-8">
+                    </div>
+                    <input type="file" style="display: none;" #fileEvent (change)="changeListener($event)">
+                    <a (click)="fileEvent.click()" style="cursor: pointer;" alt="Alterar Imagem" class="ui-g-12">
+                        <div class="mb-profile-text">
+                            <span>
+                                <i class="fa ui-icon-camera-alt"></i> Alterar Imagem
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Configurações da Filial -->
+        <div class="card card-w-title">
+            <div class="card-header ch-alt">
+                <h2 class="filial-section-title">Configurações da Filial</h2>
+                <p class="filial-section-subtitle">Informe os dados que identificam de configuração</p>
+            </div>
+            <div class="ui-g form-group m-t-20">
+                <div class="ui-g-12 ui-md-9 ui-g form-group p-l-0">
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="valor_acrescimo" pInputText currencyMask
+                                       [options]="{ prefix: '% ', thousands: '.', decimal: ',' }">
+                                <app-error-message
+                                    [control]="pessoaForm.controls['valor_acrescimo']"></app-error-message>
+                                <label>Valor do Acréscimo</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="text" formControlName="valor_repasse" pInputText currencyMask
+                                       [options]="{ prefix: '% ', thousands: '.', decimal: ',' }">
+                                <app-error-message
+                                    [control]="pessoaForm.controls['valor_repasse']"></app-error-message>
+                                <label>Valor do Repasse</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="number" formControlName="dia_reapasse" pInputText>
+                                <app-error-message
+                                    [control]="pessoaForm.controls['dia_reapasse']"></app-error-message>
+                                <label>Dia do Repasse</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <input type="number" formControlName="dia_recebimento_cartao" pInputText>
+                                <app-error-message
+                                    [control]="pessoaForm.controls['dia_recebimento_cartao']"></app-error-message>
+                                <label>Dia Para Recebimento C. Crédito</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <p-inputSwitch formControlName="cobra_convenio"></p-inputSwitch>
+                                <app-error-message
+                                    [control]="pessoaForm.controls['cobra_convenio']"></app-error-message>
+                                <label>Cobrar Convênio</label>
+                            </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                            <span class="md-inputfield">
+                                <p-inputSwitch formControlName="cobra_particular"></p-inputSwitch>
+                                <app-error-message
+                                    [control]="pessoaForm.controls['cobra_particular']"></app-error-message>
+                                <label>Cobrar Particular</label>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Endereco-form -->
+        <div class="card card-w-title">
+            <app-endereco-form [(item)]="endereco"></app-endereco-form>
+        </div>
+
+        <!-- Telefone-form -->
+        <div class="card card-w-title">
+            <app-form-telefone [(itens)]="telefones"></app-form-telefone>
+        </div>
+
+        <!-- Arquivos-form -->
+        <!--        <div class="card card-w-title">-->
+        <!--            <div class="card-header ch-alt card-header-tel m-b-20">-->
+        <!--                <div class="card-header-left">-->
+        <!--                    <h2 class="filial-section-title">Documentação da Conta</h2>-->
+        <!--                    <p class="filial-section-subtitle">Lista de anexos para validação da conta</p>-->
+        <!--                </div>-->
+        <!--                <div class=" form-group-prestador-hor">-->
+        <!--                    <h2>Adcionar novo Arquivo</h2>-->
+        <!--                    <button pButton type="button" (click)="addArquivo()" class="green-btn" icon="ui-icon-add"></button>-->
+        <!--                </div>-->
+        <!--                <div class="ui-g-12 ui-md-12 form-group-prestador-hor-items" formArrayName="anexos">-->
+        <!--                    <div *ngFor="let rotina of pessoaForm.controls.anexos.controls; let i=index"-->
+        <!--                         class="ui-g-12 ui-md-12 ui-g form-group no-pading">-->
+        <!--                        <div [formGroupName]="i" class="ui-g-12 ui-md-3">-->
+        <!--                            <span class="md-inputfield">-->
+        <!--                               <input type="file" style="display: none;" #fileEvent (change)="changeListener($event)">-->
+        <!--                                <a (click)="fileEvent.click()" style="cursor: pointer;" alt="Alterar Imagem" class="ui-g-3">-->
+        <!--                                    <div class="mb-profile-text">-->
+        <!--                                        <span>-->
+        <!--                                            <i class="fa ui-icon-camera-alt"></i>-->
+        <!--                                        </span>-->
+        <!--                                    </div>-->
+        <!--                                </a>-->
+        <!--                            </span>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </form>
+</section>

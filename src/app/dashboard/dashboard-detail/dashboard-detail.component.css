@@ -1,0 +1,46 @@
+/* .dashboard-chart .card-header-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-chart .ui-g.form-group > div:first-child {
+    padding-left: 2px;
+}
+
+.dashboard-chart .ui-g.form-group > div:last-child {
+    display: flex;
+    justify-content: flex-end;
+} */
+
+/* pesquisa */
+
+.dashboard-chart .ui-splitbutton {
+    background-color: #00719d;
+    float: right;
+}
+
+.dashboard-chart .ui-calendar {
+    width: 100% !important;
+}
+
+.dashboard-chart .ui-calendar.ui-calendar-w-btn input {
+    width: 100% !important;
+}
+
+/* .dashboard-chart .input {
+    display: flex;
+    justify-content: space-between;
+} */
+
+
+.button-pesquisa {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.input .form {
+    display: flex !important;
+    align-items: center !important;
+    height: 26px;
+}

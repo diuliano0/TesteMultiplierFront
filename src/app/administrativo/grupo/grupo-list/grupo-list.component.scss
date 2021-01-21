@@ -1,0 +1,21 @@
+app-grupo-list{
+    .card-header-title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ui-g.form-group > div:first-child {
+        padding-left: 2px;
+    }
+
+    .ui-g.form-group > div:last-child {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .ui-g.form-group input {
+        width: 100%;
+    }
+}
+
+

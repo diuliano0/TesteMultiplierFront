@@ -1,0 +1,196 @@
+@import 'theme-macro-lookei';
+
+.pg-agenda-create {
+
+    .ui-widget-header {
+        background-color: $whiteLightColor;
+        color: $primaryColor;
+        border: none;
+        font-weight: $primaryColor;
+
+        .pi {
+            color: $primaryColor;
+        }
+
+    }
+
+    .ui-datepicker {
+        width: 100%;
+    }
+
+    .content-info,
+    .content-horarios,
+    .content-calendario {
+        float: left;
+        width: 100%;
+    }
+
+    .content-info {
+
+    }
+
+    .content-horarios {
+        .content-inputSwitch {
+            display: flex !important;
+            align-items: flex-end;
+
+            label {
+                position: absolute;
+                top: -40px !important;
+                width: 90px !important;
+                font-size: 10pt;
+            }
+
+        }
+
+        .content-textarea {
+            width: 100%;
+            margin-top: 2px;
+
+            .ui-inputtext {
+                width: 100% !important;
+            }
+
+            label {
+                top: -24px !important;
+
+                &.label-style-top {
+                    font-size: 12px !important;
+                    color: $primaryColor !important;
+                }
+            }
+        }
+
+        .ui-table {
+            table {
+                table-layout: fixed !important;
+
+                th {
+                    &:last-child {
+                        width: 55px !important;
+                        padding: 16px 0 !important;
+                    }
+                }
+            }
+
+            .ui-table-thead {
+                th {
+                    color: $primaryColor;
+                    font-weight: $fontWeightTitle;
+                    text-transform: initial !important;
+                    background: $whiteDarkColor !important;
+                }
+            }
+
+            .ui-table-tbody {
+                td {
+                    padding: 12px 6px !important;
+                    text-align: center !important;
+                }
+            }
+
+            .button-del-list {
+                font-size: 10pt !important;
+                color: $redColor !important;
+                background: transparent !important;
+                border: 2px solid $redColor !important;
+                box-shadow: none !important;
+
+                &:hover {
+                    color: $whiteColor !important;
+                    background: $redColor !important;
+                }
+            }
+
+            .ui-button-icon-left {
+                top: 11px !important;
+            }
+
+            .status-horarios {
+
+            }
+
+            .button-action {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .status-disp, .status-res {
+                color: $whiteColor;
+                padding: 6px 10px;
+                border-radius: 4px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .status-disp {
+                background: $successColor;
+                color: darken($successColor, 40%);
+            }
+
+            .status-res {
+                background: $warnColor;
+                color: darken($warnColor, 40%);
+            }
+        }
+    }
+
+    .content-calendario {
+        .ui-datepicker {
+            width: 100% !important;
+
+            .ui-datepicker-header {
+                color: $primaryColor;
+                font-weight: 600;
+                background: $whiteLightColor;
+                border: none !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .ui-datepicker-title {
+                    min-width: 130px;
+                }
+
+                .ui-datepicker-prev,
+                .ui-datepicker-next {
+                    color: #002bd9 !important;
+                    position: relative !important;
+                    margin-top: -18px;
+                }
+            }
+
+            .ui-datepicker-calendar-container {
+                td {
+                    border: 1px solid $whiteLightColor;
+                    padding: 0;
+
+                    & > span {
+                        width: 100% !important;
+                    }
+
+                    & > a {
+                        text-align: end;
+                        width: 100% !important;
+                        height: 90px;
+                        border-radius: 0;
+                    }
+                    &.ui-datepicker-other-month {
+                        span {
+                            text-align: end !important;
+                            width: 100% !important;
+                            height: 90px;
+                            border-radius: 0;
+                        }
+                    }
+                }
+                .ui-datepicker-today {
+                    a {
+                        background: $primaryColor;
+                    }
+                }
+            }
+        }
+    }
+}

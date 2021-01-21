@@ -1,0 +1,226 @@
+<section class="pg-agenda-create lo-page-adjustment">
+
+    <div class="card lo-header-page-inner">
+        <div class="card-header-title nav-fixed">
+            <div class="ui-md-6 ui-sm-12 ui-toolbar-group-left">
+                <div class="lo-header-icon">
+                    <i class="lo-header-icon fa fa-calendar"></i>
+                </div>
+                <div class="lo-header-text">
+                    <h1>Novo Agendamento</h1>
+                    <small>Aqui você visualize, cria e edita a agenda de horários para locação.</small>
+                </div>
+            </div>
+            <div class="ui-md-6 ui-sm-12 ui-toolbar-group-right">
+                <button pButton type="button" label="Salvar" icon="ui-icon-save" (click)="salvarHorario(this.formHorario.value)"
+                        class="green-btn"></button>
+               <!-- <button pButton type="button" label="Editar" icon="ui-icon-create" (click)="getUrl()"
+                        class="orange-btn"></button>
+                <button pButton type="button" label="Excluir" icon="ui-icon-delete" (click)="getUrl()"
+                        class="red-btn"></button>-->
+                <button pButton type="button" label="Voltar" icon="ui-icon-delete" (click)="voltar()"
+                        class="blue-btn"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card lo-content-page-inner">
+        <div class=" lo-content-page-left" [ngClass]="{'ui-g-6':(formHorario.controls['locacao_id'].value), 'ui-g-12':!(formHorario.controls['locacao_id'].value)}">
+            <form [formGroup]="formHorario">
+                <div class="content-info">
+                    <div class="lo-card-header">Informações do Agendamento</div>
+                    <div class="lo-card-content">
+                        <!--<div class="ui-g form-group">
+                            <div class="ui-g-12 m-t-10 m-b-10">
+                                    <span class="md-inputfield">
+                                        <input class="" type="text" formControlName="" pInputText>
+                                        &lt;!&ndash;<app-error-message [control]="usuarioForm.controls['nome']"></app-error-message>&ndash;&gt;
+                                        <label>Título do Agendamento</label>
+                                    </span>
+                            </div>
+                        </div>-->
+                        <div class="ui-g form-group">
+                            <div class="ui-g-12 m-t-10 m-b-10">
+                                <span class="md-inputfield">
+                                    <p-dropdown [options]="selectLocacao?.data"
+                                                id="locacoes"
+                                                (onChange)="mudarLocacao($event)"
+                                                placeholder="Selecione a Locação"
+                                                formControlName="locacao_id">
+                                    </p-dropdown>
+                                     <label>Locação</label>
+                                     <app-error-message
+                                         [control]="formHorario.controls['locacao_id']"></app-error-message>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ui-g form-group">
+                            <div class="ui-g-3 m-t-10 m-b-10">
+                                    <span class="md-inputfield">
+                                        <p-calendar formControlName="dth_inicio" [minDate]="minDate"
+                                                    (onSelect)="changeDataInicio($event)"
+                                                    dateFormat="dd/mm/yy"></p-calendar>
+                                        <label>Data Inicial</label>
+                                        <app-error-message
+                                            [control]="formHorario.controls['dth_inicio']"></app-error-message>
+                                    </span>
+                            </div>
+                            <div class="ui-g-3 m-t-10 m-b-10">
+                                <span class="md-inputfield">
+                                    <p-calendar formControlName="dth_fim"
+                                                [minDate]="formHorario.controls['dth_inicio'].value"
+                                                [disabled]="(formHorario.controls['ocorrencia'].value == 0)"
+                                                [maxDate]="(formHorario.controls['ocorrencia'].value == 0)?formHorario.controls['dth_inicio'].value:null"
+                                                dateFormat="dd/mm/yy"></p-calendar>
+                                    <label>Data Final</label>
+                                    <app-error-message [control]="formHorario.controls['dth_fim']"></app-error-message>
+                                </span>
+                            </div>
+                            <div class="ui-g-6 m-t-10 m-b-10">
+                                    <span class="md-inputfield">
+                                        <p-dropdown [options]="ocorrencia" id="ocorrencia"
+                                                    (onChange)="checkOcorrencia($event)" formControlName="ocorrencia">
+                                        </p-dropdown>
+                                        <label>Ocorrência</label>
+                                         <app-error-message [control]="formHorario.controls['ocorrencia']"></app-error-message>
+                                    </span>
+                            </div>
+                        </div>
+                        <div *ngIf="formHorario.controls['ocorrencia'].value == 3" class="ui-g form-group">
+                            <div class="ui-g-6 m-t-10 m-b-10">
+                                    <span class="md-inputfield">
+                                       <p-multiSelect [options]="diasSemana" defaultLabel="Dias de funcionamento"
+                                                      id="data-personalizada"
+                                                      formControlName="funcionamento_semanal"></p-multiSelect>
+                                        <label>Horário Personalizado</label>
+                                         <app-error-message [control]="formHorario.controls['funcionamento_semanal']"></app-error-message>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-horarios m-t-20" [formGroup]="formMaisHorarios">
+                    <div class="lo-card-header">Reserva de Horários</div>
+                    <div class="lo-card-content">
+                        <div class="ui-g form-group">
+                            <div class="ui-g-2 ui-md-3 ui-sm-6 m-t-10 m-b-10">
+                                <span class="md-inputfield">
+                                    <input type="text" formControlName="dth_inicio" [brmasker]="{mask: '00:00', type:'num'}"
+                                           pInputText>
+                                    <label>Horário Inicial</label>
+                                         <app-error-message [control]="formMaisHorarios.controls['dth_inicio']"></app-error-message>
+                                </span>
+                            </div>
+                            <div *ngIf="formMaisHorarios.controls['dth_inicio'].value != null" class="ui-g-2 ui-md-3 ui-sm-6 m-t-10 m-b-10">
+                                <span class="md-inputfield">
+                                    <input type="text" formControlName="dth_fim" [brmasker]="{mask: '00:00', type:'num'}"
+                                           pInputText>
+                                    <label>Horário Final</label>
+                                         <app-error-message [control]="formMaisHorarios.controls['dth_fim']"></app-error-message>
+                                </span>
+                            </div>
+                            <div class="ui-g-2 ui-md-3 ui-sm-6 m-t-10 m-b-10 content-inputSwitch">
+                                <span class="md-inputfield">
+                                    <label>Não informar Saída</label>
+                                    <p-inputSwitch formControlName="informar_saida"></p-inputSwitch>
+                                         <app-error-message [control]="formMaisHorarios.controls['informar_saida']"></app-error-message>
+                                </span>
+                            </div>
+                            <div class="ui-g-2 ui-md-3 ui-sm-6 m-t-10 m-b-10 content-inputSwitch">
+                                <span class="md-inputfield">
+                                    <label>Ativar no Aplicativo</label>
+                                    <p-inputSwitch formControlName="hr_ativo_app"></p-inputSwitch>
+                                         <app-error-message [control]="formMaisHorarios.controls['hr_ativo_app']"></app-error-message>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ui-g form-group m-t-10">
+                            <div class="ui-g-2 ui-md-3 ui-sm-6 m-t-10 m-b-10">
+                                <span class="md-inputfield">
+                                     <input type="text" pInputText currencyMask
+                                            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                                            formControlName="valor"/>
+                                     <label>Valor</label>
+                                     <app-error-message [control]="formMaisHorarios.controls['valor']"></app-error-message>
+                                </span>
+                            </div>
+                            <!--<div class="ui-g-5 m-t-10 m-b-10">
+                                <span class="md-inputfield">
+                                    <p-dropdown [options]="dataStatus" id="data-status" formControlName="">
+                                    </p-dropdown>
+                                    <label>Status da Reserva</label>
+                                    &lt;!&ndash; <app-error-message [control]="grupoForm.controls['status']"></app-error-message>&ndash;&gt;
+                                </span>
+                            </div>-->
+                        </div>
+                        <!--<div class="ui-g form-group m-t-10">
+                            <div class="ui-g-12 m-t-10 m-b-10">
+                                <span class="md-inputfield content-textarea">
+                                    <label class="label-style-top">Observações</label>
+                                    <textarea pInputText type="text" placeholder="(Opcional)" [rows]="1"
+                                              pInputTextarea></textarea>
+                                    &lt;!&ndash; <app-error-message [control]="grupoForm.controls['status']"></app-error-message>&ndash;&gt;
+                                </span>
+                            </div>
+                        </div>-->
+                        <div class="ui-g form-group">
+                            <div class="ui-g-6 m-t-10 m-b-10">
+                                <span class="md-inputfield">
+                                    <button [disabled]="!(!formHorario.invalid && !formMaisHorarios.invalid)" pButton type="button" label="Pré Visualizar" icon="ui-icon-add-box"
+                                            (click)="montarHorarios(formHorario.value)"
+                                            class="button-align-left green-btn"></button>
+                                    <!-- <app-error-message [control]="grupoForm.controls['status']"></app-error-message>-->
+                                </span>
+                            </div>
+                        </div>
+                        <!--<div class="ui-g form-group">
+                            <div class="ui-g-12 m-t-10 m-b-10">
+                                <p-table [value]="horariosAdd">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th>Horário Inicial</th>
+                                            <th>Horário Final</th>
+                                            <th>Ativar App</th>
+                                            <th>Valor</th>
+                                            <th>Status</th>
+                                            <th>...</th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-horariosAdd>
+                                        <tr>
+                                            <td>{{horariosAdd.dtIncial}}</td>
+                                            <td>{{horariosAdd.dtFinal}}</td>
+                                            <td>{{horariosAdd.ativaApp}}</td>
+                                            <td>{{horariosAdd.valor | currency:'BRL':true:'1.2-2'}}</td>
+                                            <td class="status-horarios"><span
+                                                [ngClass]="{'status-disp' : horariosAdd.status == 'Disponivel', 'status-res' : horariosAdd.status == 'Reservado'}">{{horariosAdd.status}}</span>
+                                            </td>
+                                            <td class="button-action">
+                                                <button pButton type="button" icon="ui-icon-close"
+                                                        (click)="getUrl()" class="button-del-list"></button>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="ui-g-6 lo-content-page-rigth" *ngIf="formHorario.controls['locacao_id'].value">
+            <div class="content-calendario">
+                <div class="lo-card-header">Calendário de Agendamento</div>
+                <div class="lo-card-content">
+                    <div class="ui-g-12 m-t-10 m-b-10">
+                        <p-fullCalendar #fc [events]="events" [options]="options"></p-fullCalendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card lo-footer-page-inner lo-padding-reset">
+    </div>
+
+</section>

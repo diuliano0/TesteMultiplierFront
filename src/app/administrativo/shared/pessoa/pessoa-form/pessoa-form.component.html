@@ -1,0 +1,87 @@
+<section class="pg-pessoa-form">
+    <div class="ui-g form-group m-t-20">
+        <div class="ui-g-12 ui-md-9 ui-g form-group p-l-0">
+            <form [formGroup]="pessoaForm">
+                <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="cpf_cnpj" (focusout)="focusout($event)"
+                               [textMask]="{mask: cnpjMask}" pInputText>
+                        <app-error-message [control]="pessoaForm.controls['cpf_cnpj']"></app-error-message>
+                        <label>CNPJ</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="nome" pInputText>
+                        <app-error-message [control]="pessoaForm.controls['nome']"></app-error-message>
+                        <label>Nome Fantasia</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="razao_social" pInputText>
+                        <app-error-message [control]="pessoaForm.controls['razao_social']"></app-error-message>
+                        <label>Razão Social</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="email" pInputText>
+                    <app-error-message [control]="pessoaForm.controls['email']"></app-error-message>
+                    <label>E-mail</label>
+                </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="inscricao_estadual" pInputText>
+                    <app-error-message [control]="pessoaForm.controls['inscricao_estadual']"></app-error-message>
+                    <label>Inscricao Estadual</label>
+                </span>
+                </div>
+                <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="inscricao_municipal" pInputText>
+                        <app-error-message [control]="pessoaForm.controls['inscricao_municipal']"></app-error-message>
+                        <label>Inscrição Municipal</label>
+                    </span>
+                </div>
+<!--                <div class="ui-g-12 ui-md-3">-->
+<!--                    <span class="md-inputfield">-->
+<!--                        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"-->
+<!--                                    formControlName="data_fundacao"></p-calendar>-->
+<!--                        <app-error-message [control]="pessoaForm.controls['data_fundacao']"></app-error-message>-->
+<!--                        <label>Data da Fundação</label>-->
+<!--                    </span>-->
+<!--                </div>-->
+                <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="data_fundacao" [textMask]="{mask: dataMask}" pInputText>
+                        <label>Data da Fundação</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-md-12">
+                    <span class="md-inputfield md-inputfield-descricao">
+                    <textarea [rows]="3" [cols]="30" pInputTextarea placeholder="Descrição"
+                              class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+                              formControlName="descricao" autoResize="autoResize">
+                    </textarea>
+                    <app-error-message [control]="pessoaForm.controls['descricao']"></app-error-message>
+                </span>
+                </div>
+            </form>
+        </div>
+        <div class="ui-g-12 ui-md-3 mb-profile">
+            <div class="ui-g-12 mb-profile-img">
+                <img src="{{imagePath}}" class="ui-md-8">
+            </div>
+            <input type="file" style="display: none;" #fileEvent (change)="changeListener($event)">
+            <a (click)="fileEvent.click()" style="cursor: pointer;" alt="Alterar Imagem" class="ui-g-12">
+                <div class="mb-profile-text">
+                <span>
+                    <i class=" ui-icon-camera-alt"></i> Alterar Imagem
+                </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>

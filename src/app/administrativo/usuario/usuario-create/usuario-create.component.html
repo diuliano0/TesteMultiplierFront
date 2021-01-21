@@ -1,0 +1,101 @@
+<section class="pg-usuario-create">
+    <form [formGroup]="usuarioForm" (ngSubmit)="salvar(usuarioForm.value)">
+
+        <div class="card">
+            <div class="card-header-title nav-fixed">
+                <div class="ui-toolbar-group-left">
+                    <h1>Usuario</h1>
+                </div>
+                <div class="ui-toolbar-group-right">
+                    <button pButton type="submit" label="Salvar" icon="ui-icon-save" class="green-btn m-r-10"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-w-title">
+            <div class="card-header ch-alt">
+                <h2 class="filial-section-title">Inserir Usuário</h2>
+                <p class="filial-section-subtitle">Informe dos dados que identificam o usuario</p>
+            </div>
+
+            <div class="ui-g form-group m-t-20">
+                <div class="ui-g-12 ui-md-9 ui-g form-group">
+                    <div class="ui-g-12 ui-md-6">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="nome" pInputText>
+                        <app-error-message [control]="usuarioForm.controls['nome']"></app-error-message>
+                        <label>Nome</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-6">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="username" pInputText>
+                        <app-error-message [control]="usuarioForm.controls['username']"></app-error-message>
+                        <label>Login</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="email" pInputText>
+                        <app-error-message [control]="usuarioForm.controls['email']"></app-error-message>
+                        <label>E-mail</label>
+                    </span>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-4">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="cpf" [textMask]="{mask: cpfMask}" pInputText>
+                        <label>CPF</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    <span class="md-inputfield">
+                        <input type="password" formControlName="password" pInputText>
+                        <app-error-message [control]="usuarioForm.controls['password']"></app-error-message>
+                        <label>Senha</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    <span class="md-inputfield">
+                        <input type="password" formControlName="password_confirmation" pInputText>
+                        <app-error-message
+                            [control]="usuarioForm.controls['password_confirmation']"></app-error-message>
+                        <label>Confirmação da Senha</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    <span class="md-inputfield">
+                        <p-dropdown [options]="selectStatusUsuario" id="status" formControlName="status"
+                                    placeholder="Status">
+                        </p-dropdown>
+                        <app-error-message [control]="usuarioForm.controls['status']"></app-error-message>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    <span class="md-inputfield">
+                       <p-multiSelect [options]="grupos"
+                                      defaultLabel="Selecione"
+                                      formControlName="grupos"
+                                      [panelStyle]="{minWidth:'12em'}">
+                       </p-multiSelect>
+                    </span>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-3 mb-profile">
+                    <div class="ui-g-12 ">
+                        <img src="{{imagePath}}" class="ui-md-8 ui-md-offset-2 ">
+                    </div>
+
+                    <input type="file" style="display: none;" #fileEvent (change)="changeListener($event)">
+                    <a (click)="fileEvent.click()" style="cursor: pointer;" alt="Alterar Imagem" class="ui-g-12">
+                        <div class="mb-profile-text">
+                            <span>
+                                <i class="fa ui-icon-camera-alt"></i> Alterar Imagem
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

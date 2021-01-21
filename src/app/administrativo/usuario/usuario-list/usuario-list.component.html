@@ -1,0 +1,84 @@
+<section class="pg-usuario-list">
+    <div class="card lo-header-page-inner">
+        <div class="card-header-title nav-fixed">
+            <div class="ui-g-6 ui-toolbar-group-left">
+                <div class="lo-header-icon">
+                    <i class="lo-header-icon fa fa-calendar"></i>
+                </div>
+                <div class="lo-header-text">
+                    <h1>Usuários</h1>
+                </div>
+            </div>
+            <div class="ui-g-6 ui-toolbar-group-right">
+                <button pButton type="button" label="Novo" icon="ui-icon-add" (click)="getUrl('cadastro')"
+                        class="green-btn"></button>
+                <button pButton type="button" label="Editar" icon="ui-icon-create" (click)="getUrl('editar')"
+                        class="orange-btn"></button>
+            </div>
+        </div>
+    </div>
+    <div class="card lo-content-page-inner lo-padding-reset">
+
+        <p-toolbar>
+            <form [formGroup]="pesquisaForm" (ngSubmit)="pesquisar(0,pesquisaForm.value)">
+                <div class="ui-g form-group">
+                    <div class="ui-g-12 ui-md-2">
+                        <span class="md-inputfield">
+                            <input type="number" formControlName="core.users.id" pInputText>
+                            <label>Código</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="core.users.nome" pInputText>
+                            <label>Nome</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="core.users.username" pInputText>
+                            <label>Usuário</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                        <span class="md-inputfield">
+                            <button pButton type="submit" label="Buscar" icon="ui-icon-search" class="green-btn"></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </p-toolbar>
+
+        <p-table [columns]="cols"
+                 [value]="usuarios?.data"
+                 selectionMode="single"
+                 dataKey="id"
+                 index="id"
+                 (onPage)="onPage($event)"
+                 [(selection)]="selectedUsuario"
+                 [paginator]="true"
+                 [totalRecords]="usuarios?.meta?.pagination?.total"
+                 [rows]="usuarios?.meta?.pagination?.per_page"
+                 [responsive]="true"
+                 [rowsPerPageOptions]="[8,15,20]"
+                 [lazy]="true"
+                 (onLazyLoad)="loadData($event)"
+                 paginatorPosition="bottom">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns" class="ui-resizable-column">
+                        {{rowData|showItem:col.field}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</section>

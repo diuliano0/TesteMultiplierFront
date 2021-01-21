@@ -1,0 +1,74 @@
+.pg-pessoa-fisica-form .mb-profile a {
+    color: #fff;
+    margin-top: -40px;
+    padding: 0;
+    z-index: 100;
+    }
+
+.pg-pessoa-fisica-form .mb-profile-img {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    }
+
+.pg-pessoa-fisica-form .mb-profile-img img {
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: auto;
+    z-index: 3;
+    }
+
+.pg-pessoa-fisica-form .mb-profile-text {
+    align-items: center;
+    background: #4caf50;
+    display: flex;
+    justify-content: center;    
+    padding: 10px;
+    position: relative;
+    z-index: 900 !important;
+    }
+
+.pg-pessoa-fisica-form .mb-profile-text span {
+    align-items: center;
+    display: flex;
+    }
+
+.pg-pessoa-fisica-form .mb-profile-text span i {
+    margin-right: 4px;
+    }
+
+.pg-pessoa-fisica-form .md-inputfield-modulos .ui-multiselect {
+    margin-top: 3px;
+    }
+
+.pg-pessoa-fisica-form .md-inputfield-descricao {
+    }
+
+.pg-pessoa-fisica-form .ui-g.form-group .ui-g-12 {
+    min-height: 82px;
+    padding-left: 4px;
+    /*padding: 1em 1em 0 0;*/
+    }
+
+.md-inputfield {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    }
+
+.md-inputfield input {
+    width: 100%;
+    }
+
+.md-inputfield textarea {
+    width: 100%;
+    }
+
+.md-inputfield > p-dropdown > div,
+.md-inputfield > p-calendar > span {
+    width: 100% !important;
+    }

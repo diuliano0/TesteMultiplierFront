@@ -1,0 +1,47 @@
+<div class="login-panel ui-fluid pg-alterar-senha-create">
+    <div class="ui-g">
+        <div class="ui-g-12 login-header">
+            <h1>Alterar Senha</h1>
+            <h2>Preencha os dados abaixo para alterar sua senha.</h2>
+            <img src="../../assets/layout/images/logo-loading.png">
+        </div>
+
+        <form [formGroup]="senhaForm" (ngSubmit)="resetarSenha(senhaForm.value)">
+            <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="text" autocomplete="off"
+                           [formControl]="senhaForm.controls['email']"
+                           pInputText/>
+                    <label>E-mail</label>
+                </span>
+                <app-error-message [control]="senhaForm.controls['password']"></app-error-message>
+            </div>
+            <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="password" autocomplete="off"
+                           [formControl]="senhaForm.controls['password']"
+                           pInputText/>
+                    <label>Senha</label>
+                </span>
+                <app-error-message [control]="senhaForm.controls['password']"></app-error-message>
+            </div>
+            <div class="ui-g-12">
+                <span class="md-inputfield">
+                    <input type="password" autocomplete="off"
+                           [formControl]="senhaForm.controls['password_confirmation']"
+                           pInputText/>
+                    <label>Confirmar senha</label>
+                </span>
+                <app-error-message [control]="senhaForm.controls['password_confirmation']"></app-error-message>
+            </div>
+            <div class="ui-g-12 button-container">
+                <button type="submit"
+                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                   <!-- <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-person"></span> -->
+                    <span class="ui-button-text ui-c">Enviar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<p-toast key="tst" [style]="{marginTop: '70px'}"></p-toast>

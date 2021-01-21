@@ -1,0 +1,74 @@
+<section class="pg-rota-list">
+    <div class="card lo-header-page-inner">
+        <div class="card-header-title nav-fixed">
+            <div class="ui-g-6 ui-toolbar-group-left">
+                <div class="lo-header-icon">
+                    <i class="lo-header-icon fa fa-calendar"></i>
+                </div>
+                <div class="lo-header-text">
+                    <h1>Rotas</h1>
+                </div>
+            </div>
+            <div class="ui-g-6 ui-toolbar-group-right">
+                <button pButton type="button" label="Novo" icon="ui-icon-add" (click)="getUrl('cadastro')"
+                        class="green-btn"></button>
+                <button pButton type="button" label="Editar" icon="ui-icon-create" (click)="getUrl('editar')"
+                        class="orange-btn"></button>
+                <button pButton type="button" label="Excluir" icon="ui-icon-delete" (click)="getUrl('excluir')"
+                        class="red-btn"></button>
+            </div>
+        </div>
+    </div>
+    <div class="card lo-content-page-inner lo-padding-reset">
+        <p-toolbar>
+            <form [formGroup]="pesquisaForm" (ngSubmit)="pesquisar(0,pesquisaForm.value)">
+                <div class="ui-g form-group">
+                    <div class="ui-g-12 ui-md-10">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="core.rota_acessos.titulo" pInputText>
+                        <label>Titulo</label>
+                    </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    <span class="md-inputfield">
+                        <button pButton type="submit" label="Buscar" icon="ui-icon-search" class="green-btn"></button>
+                    </span>
+                    </div>
+                </div>
+            </form>
+        </p-toolbar>
+
+        <p-treeTable
+            [value]="rotas?.data_tree?.data"
+            [columns]="cols"
+            [lazy]="true"
+            (onLazyLoad)="loadData($event)"
+            [paginator]="true"
+            [totalRecords]="rotas?.meta?.pagination?.total"
+            [rows]="rotas?.meta?.pagination?.per_page"
+            selectionMode="single"
+            [(selection)]="selectedNodes1"
+            dataKey="id">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+                <tr [ttSelectableRow]="rowNode">
+                    <td *ngFor="let col of columns; let i = index">
+                        <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+            <!--<ng-template pTemplate="summary">
+               <div style="text-align: left">
+                  Selected Node: <span style="font-weight: normal">{{selectedNode1 ? selectedNode1.data.name + ' - ' + selectedNode1.data.size + ' - ' + selectedNode1.data.type : 'none'}}</span>
+               </div>
+            </ng-template>-->
+        </p-treeTable>
+   </div>
+</section>

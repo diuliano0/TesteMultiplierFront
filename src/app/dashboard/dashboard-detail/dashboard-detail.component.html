@@ -1,0 +1,67 @@
+<!--<section class="dashboard-chart" *ngIf="exist">
+    <div class="card">
+        <div class="card-header-title nav-fixed">
+            <div class="ui-g">
+                <div class="ui-g-3 ui-sm-12">
+                    <div class="ui-toolbar-group-left">
+                        <h1>DASHBOARD</h1>
+                    </div>
+                </div>
+                <div class="ui-g-6 ui-sm-12 input" >
+                    <div [formGroup]="form" class="ui-g-12 form" *ngIf="isInput">
+                            <div class="ui-g-5">
+                                    <p-calendar [showIcon]="true" placeholder="Data Inicial" formControlName="startDate" [locale]="pt"
+                                                [maxDate]="form.controls['endDate'].value ? form.controls['endDate'].value : maxDate"
+                                                [monthNavigator]="true" dateFormat="dd/mm/yy"></p-calendar>
+                            </div>
+                            <div class="ui-g-5">
+                                    <p-calendar [showIcon]="true" placeholder="Data Final" formControlName="endDate" [locale]="pt"
+                                                [minDate]="form.controls['startDate'].value ? form.controls['startDate'].value : minDate"
+                                                [monthNavigator]="true" dateFormat="dd/mm/yy"></p-calendar>
+                            </div>
+                            <div class="ui-g-2">
+                                    <button pButton (click)="pesquisar()" type="button" icon="ui-icon-search" class="green-btn"></button>
+                            </div>
+                    </div>
+                </div>
+                <div class="ui-g-3 button-pesquisa">
+                    <button style="float: right;"  pButton (click)="atualizar()" label="Atualizar" icon="ui-icon-refresh" class="green-btn"></button>
+                    <p-splitButton [label]="label" [model]="items"></p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-lg-12">
+
+&lt;!&ndash;            <p-tree&ndash;&gt;
+&lt;!&ndash;                [value]="displayedRootNodes"&ndash;&gt;
+&lt;!&ndash;                draggableNodes="true"&ndash;&gt;
+&lt;!&ndash;                droppableNodes="true"&ndash;&gt;
+&lt;!&ndash;                (onNodeExpand)="nodeExpand($event)"&ndash;&gt;
+&lt;!&ndash;                (onNodeSelect)="nodeSelect($event)"&ndash;&gt;
+&lt;!&ndash;                (onNodeUnselect)="nodeUnselect($event)"&ndash;&gt;
+&lt;!&ndash;            >&ndash;&gt;
+&lt;!&ndash;                <ng-template let-node pTemplate="default">&ndash;&gt;
+&lt;!&ndash;                    <app-pie-chart [titulo]="'TOPS-PROCEDIMENTOS'" [dados]="procedimentos" style="width: 30%"></app-pie-chart>&ndash;&gt;
+&lt;!&ndash;                </ng-template>&ndash;&gt;
+&lt;!&ndash;            </p-tree>&ndash;&gt;
+            <div *ngFor="let charts of dashboard.dashboards">
+                <div *ngIf="charts.type == 'pie' && charts.datasets[0].data.length > 0" class="column ui-g-12 ui-lg-4 ui-sm-12" draggable="true" (ondragstart)="drag($event)">
+                        <app-pie-chart [titulo]="charts.descricao" [dados]="charts"></app-pie-chart>
+                </div>
+
+                <div *ngIf="charts.type == 'bar' && charts.datasets[0].data.length > 0" class="ui-g-12 ui-lg-8 ui-sm-12">
+                        <app-bar-chart [titulo]="charts.descricao" [dados]="charts"></app-bar-chart>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>-->
+
+<div class="ui-g dashboard">
+    <div class="md-img-dashboard">
+        <img src="assets/layout/images/logo-loading.png">
+    </div>
+</div>

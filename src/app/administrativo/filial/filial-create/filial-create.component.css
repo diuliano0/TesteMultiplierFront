@@ -1,0 +1,96 @@
+.pg-filial-create input.ui-inputtext{
+    width: 100% !important;
+}
+.pg-filial-create .card-header-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pg-filial-create .ui-g.form-group > div:first-child {
+    padding-left: 2px;
+}
+
+.pg-filial-create .filial-section-title {
+    margin: 6px 0 0 !important;
+}
+
+.pg-filial-create .filial-section-subtitle {
+    margin: 0 0 6px;
+}
+
+.pg-filial-create .ui-g.form-group > div {
+    min-height: 82px;
+    padding: 1em 1em 2em 0;
+}
+
+.pg-filial-create .mb-profile {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pg-filial-create .mb-profile a {
+    color: #fff;
+    margin-top: -40px;
+    padding: 0;
+    z-index: 100;
+}
+
+.pg-filial-create .mb-profile-img {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+}
+
+.pg-filial-create .mb-profile-img img {
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*width: 100%;*/
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: auto;
+    z-index: 3;
+}
+
+.pg-filial-create .mb-profile-text {
+    align-items: center;
+    background: #4caf50;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.pg-filial-create .mb-profile-text span {
+    align-items: center;
+    display: flex;
+}
+
+.pg-filial-create .mb-profile-text span i {
+    margin-right: 4px;
+}
+
+.pg-filial-create .md-inputfield-modulos .ui-multiselect {
+    margin-top: 3px;
+}
+
+.pg-filial-create .md-inputfield-descricao {
+}
+
+/* pesquisa */
+.md-inputfield input {
+    width: 100%;
+}
+
+.md-inputfield textarea {
+    width: 100%;
+}
+
+.pg-filial-create .form-group-prestador-hor button {
+    border-radius: 0 !important;
+    margin-left: 6px;
+}

@@ -1,0 +1,84 @@
+.pg-usuario-create .card-header-title {
+    display: flex;
+    justify-content: space-between;
+    }
+
+.pg-usuario-create .ui-g.form-group > div:first-child {
+    padding-left: 2px;
+    }
+
+.pg-usuario-create .filial-section-title {
+    margin: 6px 0 0 !important;
+    }
+
+.pg-usuario-create .filial-section-subtitle {
+    margin: 0 0 6px;
+    }
+
+.pg-usuario-create .mb-profile a {
+    color: #fff;
+    margin-top: -40px;
+    padding: 0;
+    z-index: 100;
+    }
+
+.pg-usuario-create .mb-profile-img {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    }
+
+.pg-usuario-create .mb-profile-img img {
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: auto;
+    z-index: 3;
+    }
+
+.pg-usuario-create .mb-profile-text {
+    align-items: center;
+    background: #4caf50;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    z-index: 999 !important;
+    }
+
+.pg-usuario-create .mb-profile-text span {
+    align-items: center;
+    display: flex;
+    }
+
+.pg-usuario-create .mb-profile-text span i {
+    margin-right: 4px;
+    }
+
+.pg-usuario-create.md-inputfield-modulos .ui-multiselect {
+    margin-top: 3px;
+    }
+
+.pg-usuario-create .md-inputfield-descricao {
+    }
+
+.pg-usuario-create .ui-g.form-group .ui-g-12 {
+    min-height: 82px;
+    padding: 1em 1em 0 0;
+    }
+
+.md-inputfield {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    }
+
+.md-inputfield input,
+.md-inputfield textarea,
+.md-inputfield > p-dropdown > div,
+.md-inputfield > p-calendar > span {
+    width: 100% !important;
+    }

@@ -1,0 +1,25 @@
+.pg-endereco-form .filial-section-title {
+    margin: 6px 0 0 !important;
+    }
+
+.pg-endereco-form .filial-section-subtitle {
+    margin: 0 0 6px;
+    }
+
+.pg-endereco-form .inputfield-search {
+    display: flex !important;
+    flex-direction: inherit;
+    line-height: 3;
+    margin-top: -14px;
+    }
+
+.pg-endereco-form .ui-g.form-group > div {
+    padding: 2em 2em 2em 0;
+    }
+
+
+
+/* pesquisa */
+.md-inputfield input {
+    width: 100%;
+    }

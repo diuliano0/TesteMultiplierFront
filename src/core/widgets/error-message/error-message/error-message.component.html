@@ -1,0 +1,15 @@
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="(erros.hasError('required') && erros.invalid)">
+    Campo Obrigatório!
+</div>
+<div class="ui-message ui-messages-error ui-corner-all"  *ngIf="(erros.hasError('minlength') && erros.invalid)">
+    Campo precisa ter no Min. {{erros.errors?.minlength?.requiredLength}} e possui {{erros.errors?.minlength?.actualLength}}.
+</div>
+<div class="ui-message ui-messages-error ui-corner-all"  *ngIf="(erros.hasError('maxlength') && erros.invalid)">
+    Campo precisa ter no Max. {{erros.errors?.maxlength?.requiredLength}} e possui {{erros.errors?.maxlength?.actualLength}}.
+</div>
+<div class="ui-message ui-messages-error ui-corner-all"  *ngIf="(erros.hasError('pattern') && erros.invalid)">
+    Valor digitado é inválido.
+</div>
+<div class="ui-message ui-messages-error ui-corner-all"  *ngIf="(erros.hasError('is_valid') && erros.invalid)">
+    Digite um CPF válido.
+</div>

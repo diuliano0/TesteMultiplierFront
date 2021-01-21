@@ -1,0 +1,60 @@
+.pg-pessoa-form .mb-profile a {
+    color: #fff;
+    margin-top: -40px;
+    padding: 0;
+    z-index: 100;
+    }
+
+.pg-pessoa-form .mb-profile-img {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    }
+
+.pg-pessoa-form .mb-profile-img img {
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: auto;
+    z-index: 3;
+    }
+
+.pg-pessoa-form .mb-profile-text {
+    align-items: center;
+    background: #4caf50;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    z-index: 999 !important;
+    }
+
+.pg-pessoa-form .mb-profile-text span {
+    align-items: center;
+    display: flex;
+    }
+
+.pg-pessoa-form .mb-profile-text span i {
+    margin-right: 4px;
+    }
+
+.pg-pessoa-form .ui-g.form-group > div {
+    min-height: 82px;
+    padding: 1em 1em 0 0;
+    }
+
+.md-inputfield {
+    min-height: 56px;
+    }
+
+.md-inputfield input {
+    width: 100%;
+    }
+
+.md-inputfield textarea {
+    width: 100%;
+    }
+

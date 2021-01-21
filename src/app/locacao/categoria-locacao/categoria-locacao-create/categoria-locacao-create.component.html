@@ -1,0 +1,38 @@
+<section class="pg-categoria-locacao-create">
+    <form [formGroup]="categoriaLocacaoForm" (ngSubmit)="salvar(categoriaLocacaoForm.value)">
+        <div class="card">
+            <div class="card-header-title nav-fixed">
+                <div class="ui-toolbar-group-left">
+                    <h1>Categoria de Locação</h1>
+                </div>
+                <div class="ui-toolbar-group-right">
+                    <button pButton type="submit" label="SALVAR" icon="ui-icon-save" class="green-btn m-r-10"></button>
+                </div>
+            </div>
+        </div>
+        <div class="card card-w-title margen_zerada">
+            <div class="card-header ch-alt cabecalho_card_cadastro">
+                <h2 class="convenio-section-title">Categoria</h2>
+                <p class="convenio-section-subtitle">Informe os dados da Categoria</p>
+            </div>
+            <div class="ui-g form-group margen_um">
+                <div class="ui-g-12 ui-md-12 ui-g form-group">
+                    <div class="ui-g-12 ui-md-4">
+                        <span class="md-inputfield">
+                            <input type="text" formControlName="nome" pInputText>
+                            <label>Nome</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                          <span class="md-inputfield">
+                              <p-dropdown [options]="status"
+                                          formControlName="status"
+                                          placeholder="    "></p-dropdown>
+                              <label>Status</label>
+                          </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

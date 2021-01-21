@@ -1,0 +1,62 @@
+<section class="pg-user-form">
+    <div class="ui-g form-group">
+        <div class="card-header ch-alt cabecalho_card_cadastro">
+            <h2 class="section-title">Usuario</h2>
+        </div>
+        <div class="ui-g form-group m-t-20 margen_um">
+        <form [formGroup]="usuarioForm">
+            <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="nome" pInputText>
+                    <app-error-message [control]="usuarioForm.controls['nome']"></app-error-message>
+                    <label>Nome</label>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="username" pInputText>
+                    <app-error-message [control]="usuarioForm.controls['username']"></app-error-message>
+                    <label>Login</label>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+                <span class="md-inputfield">
+                    <input type="text" formControlName="email" pInputText>
+                    <app-error-message [control]="usuarioForm.controls['email']"></app-error-message>
+                    <label>E-mail</label>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="text" formControlName="cpf" [textMask]="{mask: cpfMask}" pInputText>
+                        <app-error-message [control]="usuarioForm.controls['cpf']"></app-error-message>
+                        <label>CPF</label>
+                    </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="password" formControlName="password" pInputText>
+                        <app-error-message [control]="usuarioForm.controls['password']"></app-error-message>
+                        <label>Senha</label>
+                    </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <input type="password" formControlName="password_confirmation" pInputText>
+                        <app-error-message
+                                [control]="usuarioForm.controls['password_confirmation']"></app-error-message>
+                        <label>Confirmação da Senha</label>
+                    </span>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+                    <span class="md-inputfield">
+                        <p-dropdown [options]="selectStatusUsuario" id="status" formControlName="status"
+                                    placeholder="Status">
+                        </p-dropdown>
+                        <app-error-message [control]="usuarioForm.controls['status']"></app-error-message>
+                    </span>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,63 @@
+.pg-rota-create .card-header-title {
+    display: flex;
+    justify-content: space-between;
+}
+.pg-rota-create .ui-g.form-group > div:first-child {
+    padding-left: 2px;
+}
+
+.pg-rota-create .filial-section-title {
+    margin: 6px 0 0 !important;
+}
+
+.pg-rota-create .filial-section-subtitle {
+    margin: 0 0 6px;
+}
+
+.pg-rota-create .ui-g.form-group > div {
+    padding: 1em 1em 0 0;
+}
+
+.pg-rota-create .mb-profile {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pg-rota-create .mb-profile a {
+    color: #fff;
+    margin-top: -40px;
+    z-index: 100;
+}
+
+.pg-rota-create .mb-profile-img img {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.pg-rota-create .mb-profile-text {
+    align-items: center;
+    background: #4caf50;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.pg-rota-create .mb-profile-text span {
+    display: flex;
+    align-items: center;
+}
+
+.pg-rota-create .mb-profile-text span i {
+    margin-right: 4px;
+}
+
+/* pesquisa */
+.md-inputfield input {
+    width: 100%;
+}
+
+.md-inputfield textarea {
+    width: 100%;
+}

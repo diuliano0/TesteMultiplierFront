@@ -1,0 +1,21 @@
+.pg-user-form .card-header {
+    padding: 6px 0 0 0;
+    }
+
+.pg-user-form .ui-g.form-group .ui-g-12 {
+    min-height: 82px;
+    /*padding: 1em 1em 0 0;*/
+    }
+
+.pg-user-form .form-group {
+    display: flex;
+    flex-direction: column;
+    }
+
+.md-inputfield input {
+    width: 100%;
+    }
+
+.md-inputfield > p-dropdown > div {
+    width: 100% !important;
+    }

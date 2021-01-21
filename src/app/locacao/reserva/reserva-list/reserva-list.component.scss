@@ -1,0 +1,8 @@
+app-reserva-list {
+    .ui-table {
+        min-height: 70vh !important;
+        .ui-table-wrapper {
+            overflow-x: initial !important;
+        }
+    }
+}

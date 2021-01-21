@@ -1,0 +1,15 @@
+<section class="pg-perfil-create">
+
+    <div class="card">
+        <div class="card-header-title">
+            <h1>Meus dados</h1>
+            <div class="ui-toolbar-group-right">
+                <button pButton type="button" label="Salvar" icon="ui-icon-save" (click)="atualizar()" class="green-btn m-r-10"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-w-title">
+        <app-user-form [(item)]="usuario"></app-user-form>
+    </div>
+</section>

@@ -1,0 +1,179 @@
+<section #fomSize class="pg-calendario-list lo-page-adjustment">
+
+    <div class="card lo-header-page-inner">
+        <div class="card-header-title nav-fixed">
+            <div class="ui-g-12">
+                <div class="lo-header-icon">
+                    <i class="lo-header-icon fa fa-calendar"></i>
+                </div>
+                <div class="lo-header-text">
+                    <h1>Agenda</h1>
+                    <small>Aqui está todos os horários disponíveis e reservas da sua locação.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card lo-select-page-inner">
+        <h4>Locações</h4>
+        <p-dropdown (onChange)="mudarLocacao($event)" [(ngModel)]="locacao"
+                    [filter]="true" [options]="selectLocacao?.data"
+                    placeholder="Selecione a Locação"></p-dropdown>
+        <div class="ui-g">
+            <div [class.sumir-calendario]="locacao == null" class="ui-g-12 ui-md-12">
+                <p-fullCalendar #fc [events]="events" [options]="options"></p-fullCalendar>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW MODAL -->
+    <p-dialog [(visible)]="display_modal_opcoes" [baseZIndex]="10000" [blockScroll]="true"
+              [modal]="true"
+              *ngIf="locacao != null"
+              (onHide)="initFormOpcoes()"
+              [responsive]="true"
+              class="pg-rotina-modal-opcoes"
+              header="Opções de Reserva">
+
+            <p-tabView>
+                <p-tabPanel header="Horários">
+                    <form [formGroup]="formOpcoesHorarios" (ngSubmit)="salvarHorario(formOpcoesHorarios.value)" >
+                        <div class="ui-g form-group form-group-prestador m-t-30">
+                            <div class="ui-g-12 ui-md-12 ui-g form-group">
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <input type="text" formControlName="locacao_nome" readonly value="Estrela do Lago" pInputText>
+    <!--                                    <input type="text" formControlName="locacao" pInputText>-->
+                                        <app-error-message [control]="formOpcoesHorarios.controls['locacao_nome']"></app-error-message>
+                                        <label>Locação</label>
+                                    </span>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <input type="text" formControlName="locador_nome"  readonly pInputText>
+    <!--                                    <input type="text" formControlName="locatario" pInputText>-->
+                                        <app-error-message [control]="formOpcoesHorarios.controls['locador_nome']"></app-error-message>
+                                        <label>Locador</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-g form-group m-t-20">
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <p-calendar [locale]="pt" [disabled]="habilitar_reserva" [timeOnly]="true" readonly hourFormat="24" formControlName="dth_inicio"></p-calendar>
+                                        <app-error-message [control]="formOpcoesHorarios.controls['dth_inicio']"></app-error-message>
+                                        <label>Horário de Entrada</label>
+                                    </span>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <p-calendar [locale]="pt" [minDate]="formOpcoesHorarios.controls['dth_inicio'].value" [disabled]="habilitar_reserva" [timeOnly]="true" hourFormat="24"
+                                                    formControlName="dth_fim"></p-calendar>
+                                        <app-error-message [control]="formOpcoesHorarios.controls['dth_fim']"></app-error-message>
+                                        <label>Horário de Saida</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-g form-group m-t-20">
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                       <input type="text" formControlName="data_locacao" value="{{selectedEvent?.data_locacao}}" readonly pInputText>
+                                        <label>Data</label>
+                                    </span>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <input type="text" [readonly]="habilitar_reserva" formControlName="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText>
+                                        <app-error-message [control]="formOpcoesHorarios.controls['valor']"></app-error-message>
+                                        <label>Valor</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-g form-group m-t-10">
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <p-checkbox [disabled]="habilitar_reserva" formControlName="hr_ativo_app" [binary]="true" label="Ativo no Aplicativo" ></p-checkbox>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p-footer class="mb-footer">
+                            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                <button pButton class="red-bg-button footer-right" *ngIf="habilitar_reserva" icon="ui-icon-delete" (click)="removerHorario(selectedEvent.id)" label="Excluir" type="button"></button>
+                                <button pButton class="green-btn footer-right" *ngIf="!habilitar_reserva" label="Adicionar Horário" icon="ui-icon-add"  type="submit"></button>
+                            </div>
+                        </p-footer>
+                    </form>
+                </p-tabPanel>
+                <p-tabPanel *ngIf="habilitar_reserva" header="Reserva">
+                    <form  [formGroup]="formOpcoesHorarios" (ngSubmit)="reservar(formOpcoesHorarios.value)">
+                        <div class="ui-g form-group form-group-prestador m-t-30">
+                            <div class="ui-g-12 ui-md-12 ui-g form-group">
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <p-autoComplete field="label" [minlength]="3" formControlName="locador_id"
+                                                        [suggestions]="selectLocador"
+                                                        [disabled]="selectedEvent?.possui_reserva"
+                                                        (onSelect)="selectLocadorAutoComplete($event)"
+                                                        (completeMethod)="buscarLocador($event)"></p-autoComplete>
+                                        <app-error-message [control]="formOpcoesHorarios.controls['locador_id']"></app-error-message>
+                                        <label>{{selectedEvent?.locador_nome}}</label>
+                                    </span>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <input type="text" formControlName="locador_telefone" pInputText>
+                                        <app-error-message [control]="formOpcoesHorarios.controls['locador_telefone']"></app-error-message>
+                                        <label>Telefone</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-g form-group m-t-20">
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <p-calendar [locale]="pt" [disabled]="habilitar_reserva" [timeOnly]="true" hourFormat="24" formControlName="dth_inicio"></p-calendar>
+                                        <app-error-message [control]="formOpcoesHorarios.controls['dth_inicio']"></app-error-message>
+                                        <label>Horário de Entrada</label>
+                                    </span>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <p-calendar [locale]="pt" [disabled]="habilitar_reserva" [timeOnly]="true" hourFormat="24" formControlName="dth_fim"></p-calendar>
+                                        <app-error-message [control]="formOpcoesHorarios.controls['dth_fim']"></app-error-message>
+                                        <label>Horário de Saida</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-g form-group m-t-20">
+                                <div class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                        <input type="text" [readOnly]="selectedEvent?.possui_reserva" formControlName="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText>
+                                        <!--<input type="text" formControlName="valor_locacao" pInputText>-->
+                                        <app-error-message [control]="formOpcoesHorarios.controls['valor']"></app-error-message>
+                                        <label>Valor</label>
+                                    </span>
+                                </div>
+                                <div *ngIf="selectedEvent?.possui_reserva" class="ui-g-12 ui-md-6">
+                                    <span class="md-inputfield">
+                                       <input type="text" formControlName="status_reserva_label" value="{{selectedEvent?.status_reserva_label?.data?.descricao}}" readonly pInputText>
+                                        <label>Status reserva</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p-footer class="mb-footer">
+                            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                <button pButton class="green-btn footer-right" [disabled]="selectedEvent?.possui_reserva" label="Reservar" icon="ui-icon-add"  type="submit"></button>
+                                <button pButton type="button" class="footer-right m-r-10" [disabled]="!selectedEvent?.possui_reserva" (click)="cancelarReserva()" label="Cancelar"></button>
+                            </div>
+                        </p-footer>
+                    </form>
+                </p-tabPanel>
+            </p-tabView>
+    </p-dialog>
+</section>
